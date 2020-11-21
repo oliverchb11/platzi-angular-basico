@@ -1,0 +1,4 @@
+<div class="product-grid">
+    <app-product *ngFor="let product of products" (editProductClick)="editProduct($event)" (addProductClick)="addProductDad($event)" [product]="product" [tituloProduct]="tituloProducto">
+    </app-product>
+</div>
