@@ -1,0 +1,26 @@
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { ProductsComponent } from './components/products/products.component';
+import { ProductComponent } from './components/product/product.component';
+import { DetailComponent } from './components/detail/detail.component';
+import { ProductsRoutingModule } from './products-routing.module';
+import { MaterialModule } from '../material/material.module';
+
+@NgModule({
+  declarations: [
+    ProductsComponent,
+    ProductComponent,
+    DetailComponent
+  ],
+  imports: [
+    CommonModule,
+    ProductsRoutingModule,
+    MaterialModule
+  ],
+  exports:[
+    ProductComponent,
+    DetailComponent,
+    ProductComponent
+  ]
+})
+export class ProductsPModule { }

@@ -1,0 +1,35 @@
+<div class="container mt-5">
+    <div class="row">
+        <mat-card-title>
+            Register Users
+        </mat-card-title>
+    </div>
+    <form [formGroup]="formulario" (ngSubmit)="registerUsers(formulario,$event)">
+        <div class="row mt-3">
+            <mat-form-field class="example-full-width">
+                <mat-label>
+                    Email
+                </mat-label>
+                <input type="email" matInput placeholder="Ex. pat@example.com" formControlName="email">
+            </mat-form-field>
+        </div>
+        <div class="row">
+            <p *ngIf="validRequiredEmail">El correo es requerido</p>
+        </div>
+        <div class="row">
+            <p *ngIf="validEmailNoValid">El correo no es invalido</p>
+        </div>
+        <div class="row">
+            <mat-form-field class="example-full-width">
+                <mat-label>
+                    password
+                </mat-label>
+                <input type="password" matInput placeholder="*********" formControlName="password">
+            </mat-form-field>
+        </div>
+        <div class="row">
+            <p *ngIf="validRequiredPassword">El password es requerido</p>
+        </div>
+        <button [disabled]="formulario.invalid" mat-raised-button type="submit" color="primary">Register</button>
+    </form>
+</div>

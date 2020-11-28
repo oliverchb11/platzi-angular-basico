@@ -1,0 +1,51 @@
+<form [formGroup]="formulario" (ngSubmit)="editProuduct(formulario,$event)">
+    <mat-card class="card">
+        <mat-card-header>
+            <mat-card-title>
+                Producto
+            </mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <div class="row">
+                <div class="col-xs">
+                    <mat-form-field>
+                        <input placeholder="Id" formControlName="id" type="text" matInput>
+                    </mat-form-field>
+                    <p appDirective *ngIf="hasErrorRequiredId">El campo id es requerido</p>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-xs">
+                    <mat-form-field>
+                        <input placeholder="Title" formControlName="title" type="text" matInput>
+                    </mat-form-field>
+                    <p appDirective *ngIf="hasErrorRequiredTitle">El campo title es requerido</p>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-xs">
+                    <mat-form-field>
+                        <input placeholder="Price" formControlName="price" type="number" matInput>
+                    </mat-form-field>
+                    <p appDirective *ngIf="hasErrorRequiredPrice">El campo price es requerido</p>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-xs">
+                    <mat-form-field>
+                        <textarea placeholder="Description" formControlName="description" type="text" matInput></textarea>
+                    </mat-form-field>
+                    <p appDirective *ngIf="hasErrorRequiredDescription">El campo description es requerido</p>
+                </div>
+            </div>
+
+        </mat-card-content>
+        <mat-card-actions>
+            <button [disabled]="formulario.invalid" mat-raised-button color="primary" type="submit">Editar Producto</button>
+        </mat-card-actions>
+    </mat-card>
+
+</form>

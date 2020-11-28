@@ -5,6 +5,14 @@
   To learn more about this file see: https://angular.io/config/solution-tsconfig.
 */
 {
+  "compilerOptions": {
+    "rootDir": "./src",
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "forceConsistentCasingInFileNames": true,
+    "allowJs": true,
+    
+ },
   "files": [],
   "references": [
     {
@@ -12,6 +20,10 @@
     },
     {
       "path": "./tsconfig.spec.json"
-    }
-]
+    },
+    
+],
+
+
 }
+

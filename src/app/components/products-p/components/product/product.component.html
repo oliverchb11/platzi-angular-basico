@@ -1,0 +1,30 @@
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>
+            <h4>Nombre: {{product.title | uppercase}}</h4>
+        </mat-card-title>
+        <mat-card-subtitle>
+            <h4>Precio: {{product.price|currency}}</h4>
+        </mat-card-subtitle>
+    </mat-card-header>
+    <div class="crop-image">
+        <img class="text-center" [src]="product.image" alt="" height="80" width="120" srcset="">
+    </div>
+    <mat-card-content>
+        <p>Descripcion: {{product.description | slice:0:10 }}...</p>
+    </mat-card-content>
+    <mat-card-actions>
+        <a mat-raised-button [routerLink]="['/products',product.id]">See Detail</a>
+        <button mat-raised-button color="primary" (click)="addProduct()">Add to the car</button>
+    </mat-card-actions>
+</mat-card>
+<!-- 
+
+<h4 appHighlight>Titulo: {{tituloProduct}} </h4>
+
+
+<h4>Fecha: {{fechaHoy | date:'medium'}}</h4>
+
+<br>
+<button mat-raised-button color="primary" (click)="edit()">Edit</button>
+<button mat-raised-button color="primary" (click)="deleteP()">Delete</button> -->

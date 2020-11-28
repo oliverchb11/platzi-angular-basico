@@ -1,0 +1,69 @@
+<div class="row">
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+        <h1>Agregado al carrito</h1>
+    </div>
+    <div class="col-md-4"></div>
+</div>
+
+
+<mat-horizontal-stepper>
+    <mat-step [editable]="booleanStep">
+        <div *ngIf="(cantidadProducts$ | async) as cantidad">
+            <mat-label *ngIf="cantidad >= 1">Sus productos</mat-label>
+            <mat-label *ngIf="cantidad === 0">No hay productos</mat-label>
+            <ul>
+                <li *ngFor="let orderProducts of (orderProducts$ | async)">
+                    {{orderProducts.title }} {{orderProducts.id | productRepeated}}
+                </li>
+            </ul>
+            <div>
+                <button *ngIf="cantidad >= 1" (click)="booleanStep = false" mat-button matStepperNext>Next</button>
+            </div>
+            {{cantidad}}
+        </div>
+    </mat-step>
+    <mat-step [editable]="booleanStep">
+        <form [formGroup]="formulario" (ngSubmit)="infoClient(formulario)">
+            <div class="row">
+                <mat-form-field>
+                    <mat-label>Ingrese su nombre</mat-label>
+                    <input type="text" matInput placeholder="Ingrese su nombre" formControlName="name">
+                </mat-form-field>
+            </div>
+            <div class="row">
+                <p appDirective *ngIf="validRequiredName">El nombre es requerido</p>
+            </div>
+
+            <div class="row">
+                <mat-form-field>
+                    <mat-label>Ingrese su email</mat-label>
+                    <input type="email" matInput placeholder="Ingrese su email" formControlName="email">
+                </mat-form-field>
+            </div>
+            <div class="row">
+                <p appDirective *ngIf="validRequiredEmail">El correo es requerido</p>
+            </div>
+            <div class="row">
+                <p appDirective *ngIf="validEmail">El correo es invalido</p>
+            </div>
+            <div class="row">
+                <button type="submit" (click)="booleanStep = true" mat-button matStepperPrevious>Previous</button>
+                <button [disabled]="formulario.invalid" mat-button type="submit">Guardar datos</button>
+                <button [disabled]="formulario.invalid" (click)="booleanStep = false" mat-button matStepperNext>Next</button>
+            </div>
+        </form>
+    </mat-step>
+    <mat-step [editable]="booleanStep">
+        Pago
+        <div class="row">
+            <button (click)="booleanStep = true" mat-button matStepperPrevious>Previous</button>
+            <button (click)="booleanStep = false" mat-button matStepperNext>Realizar pago</button>
+        </div>
+    </mat-step>
+</mat-horizontal-stepper>
+
+
+<div>
+
+</div>
