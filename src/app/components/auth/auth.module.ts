@@ -5,7 +5,8 @@ import { AuthRoutingModule } from './auth-routing.module';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 // firebase auth
-import { AngularFireAuthModule } from 'angularfire2/auth';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+// modulo de material
 import { MaterialModule } from '../material/material.module';
 // forms module
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';

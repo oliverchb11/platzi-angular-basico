@@ -43,6 +43,13 @@
                 </div>
             </div>
 
+            <div class="row">
+                <div class="col-xs">
+                    <img *ngIf="(image$ | async ) as image" [src]="image" alt="" srcset="">
+                    <input type="file" (change)="upLoadFile($event)">
+                </div>
+            </div>
+
         </mat-card-content>
         <mat-card-actions>
             <button [disabled]="formulario.invalid" mat-raised-button color="primary" type="submit">Crear Producto</button>

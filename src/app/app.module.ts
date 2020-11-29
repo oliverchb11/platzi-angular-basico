@@ -19,13 +19,13 @@ import { ProductsPModule } from './components/products-p/products-p.module';
 import { ContactsModule } from './components/contacts/contacts.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './components/material/material.module';
+import { environment } from 'src/environments/environment';
+import { AdminModule } from './components/admin/admin.module';
+import { AuthModule } from './components/auth/auth.module';
 // httpClient
 import { HttpClientModule } from '@angular/common/http';
-import { AdminModule } from './components/admin/admin.module';
 // firebase config
-import { AngularFireModule } from 'angularfire2';
-import { environment } from 'src/environments/environment';
-import { AuthModule } from './components/auth/auth.module';
+import { AngularFireModule } from '@angular/fire';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 @NgModule({
   declarations: [

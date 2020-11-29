@@ -11,7 +11,7 @@ import { DasboardComponent } from './components/dasboard/dasboard.component';
 import { FormProductComponent } from './components/form-product/form-product.component';
 import { DirectiveDirective } from './components/directive.directive';
 import { EditFormComponent } from './components/edit-form/edit-form.component';
-
+import { AngularFireStorageModule } from '@angular/fire/storage';
 
 
 @NgModule({
@@ -23,6 +23,7 @@ import { EditFormComponent } from './components/edit-form/edit-form.component';
     MaterialModule,
     ReactiveFormsModule,
     FormsModule,
+    AngularFireStorageModule
   ],
   exports:[
     DirectiveDirective

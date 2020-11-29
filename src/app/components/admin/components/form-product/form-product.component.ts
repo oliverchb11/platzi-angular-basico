@@ -3,6 +3,9 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ProductsService } from 'src/app/components/core/services/products.service';
 import { MyValidators } from '../../../utils/validators';
+import { AngularFireStorage } from '@angular/fire/storage';
+import { finalize } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 @Component({
   selector: 'app-form-product',
   templateUrl: './form-product.component.html',
@@ -10,7 +13,13 @@ import { MyValidators } from '../../../utils/validators';
 })
 export class FormProductComponent implements OnInit {
   public formulario: FormGroup;
-  constructor(private fb: FormBuilder, private productService: ProductsService, private router: Router ) {
+  public image$: Observable<any>;
+  constructor(
+    private fb: FormBuilder,
+    private productService: ProductsService,
+    private router: Router,
+    public angularFireStorage: AngularFireStorage
+     ) {
     this.buildForm();
    }
 
@@ -25,7 +34,6 @@ export class FormProductComponent implements OnInit {
       image: [''],
       description: ['', Validators.required],
     });
-  
   }
 
   public createProuduct(datos: FormGroup, even: Event): void{
@@ -37,6 +45,7 @@ export class FormProductComponent implements OnInit {
       this.router.navigateByUrl('admin/prouducts');
     }
   }
+
 
 
   get hasErrorRequiredPrice(): boolean{
@@ -59,5 +68,22 @@ export class FormProductComponent implements OnInit {
     return this.formulario.get('description').hasError('required') && this.formulario.get('description').dirty;
   }
 
+  public upLoadFile(event): void{
+    console.log(event.target.files[0]);
+    const file = event.target.files[0];
+    const name = event.target.files[0].name;
+    const nameFile = name;
+    const fileRef = this.angularFireStorage.ref(nameFile);
+    const taks = this.angularFireStorage.upload(nameFile, file);
+    taks.snapshotChanges().pipe(
+      finalize(() => {
+      this.image$ =  fileRef.getDownloadURL();
+      this.image$.subscribe(url => {
+        this.formulario.get('image').setValue(url);
+      });
+      console.log( this.image$);
+      })
+    ).subscribe();
+  }
 
 }
